@@ -1,0 +1,10 @@
+<%= form_with url:  dashboards_path, local: true, method: :get do |f| %>
+  <div class="form-group">
+  <%= f.label :cityname %>
+  <%= f.select :name, options_for_select(@city),{},{class: "form-select form-select-lg mb-3"}
+  %>
+ </div>
+<%# if current_user.type == 'Customer' %>
+  <%= submit_tag 'Search', class: "btn btn-primary btn-block mt-2" %>
+  <%# end %>
+<% end %>
