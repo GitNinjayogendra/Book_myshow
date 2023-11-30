@@ -10,5 +10,9 @@ Rails.application.routes.draw do
   # root "articles#index"
   root to: "dashboards#index"
   resources :dashboards
+  resources :movies
+  resources :cinemas
+  resources :cities
+  resources :showtimes
   devise_for :users, controllers: { sessions: 'users/sessions' }
 end

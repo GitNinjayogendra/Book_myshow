@@ -1,10 +1,10 @@
-<h1> List of cities</h1>
+ <h1>Cities information</h1>
+  <ul>
+    <% @cities.each do |city| %>
+    <li><%= link_to city.name, city %></li>
+    <% end %>
+  </ul>
+  <%= link_to "New City", new_city_path %>
 
-<ul>
-  <% @cities.each do |city| %>
-    <li>
-      <%= city.name %>
-      <%= city.state %>
-    </li>
-  <% end %>
-</ul>
+
+ 

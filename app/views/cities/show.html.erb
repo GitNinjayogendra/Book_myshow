@@ -1,2 +1,7 @@
-<h1><%= @city.name %></h1>
-<p>state:<%= @city.state %></p>
+<p>city name:<%= @city.name %></p>
+<p>city state:<%= @city.state %></p>
+
+  <ul>
+  <li><%= link_to "Edit", edit_city_path(@city) %></li>
+  <li><%= button_to "Destroy", city_path(@city), method: :delete, data: { confirm: 'Are you sure?'} %></li>
+</ul>

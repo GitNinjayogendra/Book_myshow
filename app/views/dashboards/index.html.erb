@@ -5,12 +5,15 @@
   <%= button_to "Sign in", new_user_session_path %> 
 <% end %>
 
-<h1> List of cinema related to city </h1>
-
-<ul>
-  <% @cinema.each do |cinema| %>
-     <li> <%= cinema.name %> </li>
-  <% end %>
-</ul>
-
-
+<%if user_signed_in? %>
+  <ul>
+    <%= form_with url:  movies_path, local: true, method: :get do |f| %>
+      <div class="form-group">
+        <h1>select your cinema</h1>
+        <%= f.label :cinemaname %>
+        <%= f.select :id, options_for_select(@cinema),{},{class: "form-select form-select-lg mb-3"}%>
+      </div>
+    <%= f.submit 'select', class: "btn btn-primary btn-block mt-2" %>
+    <% end %>
+  </ul>
+<% end %>

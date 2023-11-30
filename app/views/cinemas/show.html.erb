@@ -1,0 +1,6 @@
+<p>Cinema name:<%= @cinema.name %></p>
+
+<ul>
+  <li><%= link_to "Edit", edit_cinema_path(@cinema) %></li>
+  <li><%= button_to "Destroy", cinema_path(@cinema), method: :delete, data: { confirm: 'Are you sure?'} %></li>
+</ul>

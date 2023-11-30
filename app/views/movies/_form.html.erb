@@ -1,0 +1,21 @@
+<%= form_with model: @movie do |form| %>
+
+  <div>
+    <%= form.label :name  %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div>
+    <%= form.label :duration %>
+    <%= form.text_area :duration %>
+  </div>  
+
+  <div>
+    <%= form.submit %>
+  </div>
+<%end%>  

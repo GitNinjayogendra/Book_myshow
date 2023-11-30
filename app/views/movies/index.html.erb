@@ -1,2 +1,19 @@
-<h1>Movies#index</h1>
-<p>Find me in app/views/movies/index.html.erb</p>
+
+<% @movies.each do |movie| %>
+<div class="card" style="width: 18rem;">
+  <img src="https://m.media-amazon.com/images/M/MV5BNzgzYjZjYzMtNjcyYy00NWI3LTg1NDItOTMzMzdhMjhjNWExXkEyXkFqcGdeQXVyNjA3OTI5MjA@._V1_.jpg" class="card-img-top" , alt="...">
+  <div class="card-body">
+    <h5 class="card-title"><%= movie.name %></h5>
+    <p class="card-text"><%= movie.description %></p>
+    <p>link_to showtimes_path , class= "stretched-link">select movie</p>
+  </div>
+</div>
+<%end%>
+
+
+
+
+
+
+
+ 
