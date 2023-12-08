@@ -1,18 +1,19 @@
-
-<% @movies.each do |movie| %>
-<div class="card" style="width: 18rem;">
-  <img src="https://m.media-amazon.com/images/M/MV5BNzgzYjZjYzMtNjcyYy00NWI3LTg1NDItOTMzMzdhMjhjNWExXkEyXkFqcGdeQXVyNjA3OTI5MjA@._V1_.jpg" class="card-img-top" , alt="...">
-  <div class="card-body">
-    <h5 class="card-title"><%= movie.name %></h5>
-    <p class="card-text"><%= movie.description %></p>
-    <p>link_to showtimes_path , class= "stretched-link">select movie</p>
+  <div class="row">
+    <% @movies.each do |movie| %>
+    <div class="col-md-2">
+      <div class="card" style="height: 400px; width: 300px; margin: 20px;">
+        <% if movie.avatar.attached? %>
+        <%= image_tag(url_for(movie.avatar)) %>
+        <% end %>
+        <div class="card-body">
+          <h5 class="card-title">movie name:<%= movie.name %></h5>
+          <h5 class="card-text">movie description:<%=movie.description%></h5>
+          <p class="card-text"><%= link_to "book ticket", showtimes_path(movie_id: movie.id, cinema_id: @cinema.id) %></p>
+        </div>
+      </div>
+    </div>
+    <% end %>
   </div>
-</div>
-<%end%>
-
-
-
-
 
 
 

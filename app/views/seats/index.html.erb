@@ -1,0 +1,16 @@
+<h1>select your seat for this show </h1>
+
+
+  <div class="row">
+    <% @seats.each do |seat| %>
+      <div class="col-md-1">
+        <div class="card" >
+          <div class="card-body">
+            <h5 class="card-text"><%= seat.seatnumber %></h5>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+

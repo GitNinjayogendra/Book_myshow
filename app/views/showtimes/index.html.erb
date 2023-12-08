@@ -1,8 +1,21 @@
-<div class="card" style="width: 18rem;">
-  <img src="..." class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
+<div class= "row">
+    <div class = "col-md-1"><%= @movie.name%></div>
+      <%@showtimes.each do |showtime|%>
+          <div class= "col-md-1">
+            <%= link_to seats_path(cinema_id: @cinema_id) do %>
+              <div class="card">
+                <div class="card-body">
+                  <p class="card-text"><%= showtime.startime.strftime('%I:%M %p')%></p>
+                </div>
+              </div>
+            <% end %>
+          </div>
+      <% end %>
 </div>
+
+
+
+
+
+
+

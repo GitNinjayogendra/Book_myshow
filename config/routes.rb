@@ -14,5 +14,6 @@ Rails.application.routes.draw do
   resources :cinemas
   resources :cities
   resources :showtimes
+  resources :seats
   devise_for :users, controllers: { sessions: 'users/sessions' }
 end

@@ -1,0 +1,6 @@
+<p>showtime:<%= @showtime.startime %></p>
+
+<ul>
+  <li><%= link_to "edit time" , edit_showtime_path(@showtime)%></li>
+  <li><%= link_to "destroy time", showtime_path(@showtime),method: :delete, data: { confirm: 'Are you sure?'} %></li>
+</ul>

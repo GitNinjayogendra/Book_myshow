@@ -2,8 +2,8 @@ class MoviesController < ApplicationController
   before_action :current_movie, only: [:show, :edit, :update, :destroy]
 
   def index
-    cinema = Cinema.find_by(id: params[:id])
-    @movies = cinema.movies
+    @cinema = Cinema.find_by(id: params[:id])
+    @movies = @cinema.movies
   end
 
   def show
@@ -27,7 +27,7 @@ class MoviesController < ApplicationController
   end
 
   def update
-    if @movie.update(city_params)
+    if @movie.update(movie_params)
       redirect_to @movie
     else
       render :edit, status: :unprocessable_entity
@@ -35,13 +35,13 @@ class MoviesController < ApplicationController
   end
 
   def destroy
- @movie.destroy
- redirect_to root_path, status: :see_others
+    @movie.destroy
+    redirect_to root_path, status: :see_others
   end
 
   private
-  def city_params
-    params.require(:movie).permit(:name, :description , :duration)
+  def movie_params
+    params.require(:movie).permit(:name, :description , :duration, :avatar)
   end
 
   def current_movie

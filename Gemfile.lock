@@ -255,7 +255,7 @@ PLATFORMS
 DEPENDENCIES
   bootsnap
   capybara
-  carrierwave (~> 0.9)
+  carrierwave
   cssbundling-rails
   debug
   devise (~> 4.9, >= 4.9.2)

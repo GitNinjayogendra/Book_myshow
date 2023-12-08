@@ -3,9 +3,9 @@
 <%= form_with url:  dashboards_path, local: true, method: :get do |f| %>
   <div class="form-group">
     <h1>select your city</h1>
-    <%= f.label :cityname %>
-    <%= f.select :id, options_for_select(@city),{},{class: "form-select form-select-lg mb-3"}%>
+      <%= f.label :cityname %>
+      <%= f.select :id, options_for_select(@city),{},{class: "form-select form-select-lg mb-3"}%>
   </div>
-  <%= submit_tag 'select', class: "btn btn-primary btn-block mt-2" %>
+    <%= submit_tag 'select', class: "btn btn-primary btn-block mt-2" %>
 <% end %>
 

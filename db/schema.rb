@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_30_054957) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_07_110650) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -69,7 +69,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_30_054957) do
     t.datetime "updated_at", null: false
     t.string "description"
     t.integer "duration"
-    t.string "image"
+  end
+
+  create_table "seats", force: :cascade do |t|
+    t.integer "seatnumber"
+    t.string "status"
+    t.integer "cinema_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cinema_id"], name: "index_seats_on_cinema_id"
   end
 
   create_table "showtimes", force: :cascade do |t|
@@ -100,5 +108,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_30_054957) do
   add_foreign_key "cinema_movies", "cinemas"
   add_foreign_key "cinema_movies", "movies"
   add_foreign_key "cinemas", "cities"
+  add_foreign_key "seats", "cinemas"
   add_foreign_key "showtimes", "movies"
 end
