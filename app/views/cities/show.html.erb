@@ -1,7 +1,6 @@
-<p>city name:<%= @city.name %></p>
+.<p>city name:<%= @city.name %></p>
 <p>city state:<%= @city.state %></p>
 
-  <ul>
-  <li><%= link_to "Edit", edit_city_path(@city) %></li>
-  <li><%= button_to "Destroy", city_path(@city), method: :delete, data: { confirm: 'Are you sure?'} %></li>
-</ul>
+<%= link_to "back", cities_path %>
+  <%= link_to "Edit", edit_city_path(@city) %>
+  <%= button_to "Destroy", city_path(@city), method: :delete, data: { confirm: 'Are you sure?'} %>

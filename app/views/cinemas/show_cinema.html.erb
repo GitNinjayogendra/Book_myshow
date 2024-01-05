@@ -1,0 +1,19 @@
+<div class="row">
+  <% @cinemas.each do |cinema| %>
+    <div class="col-md-1">
+      <p><%= cinema.name %></p>
+    </div>
+  <% end %>
+
+  <% @showtimes.each do |showtime| %>
+    <div class="col-md-1">
+      <%= link_to   show_seat_seats_path(cinema_id: showtime.cinema_id) do %>
+        <div class="card">
+          <div class="card-body">
+            <p class="card-text"><%= showtime.startime.strftime('%I:%M %p') %></p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>

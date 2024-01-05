@@ -1,15 +1,18 @@
 class DashboardsController < ApplicationController
-
   def index
-    if user_signed_in?
-      @cinema = Cinema.where(city_id:params[:id]).order(:name).pluck(:name,:id)
-    else
-      redirect_to new_user_session_path
+    @city = City.find_by_name(params[:city] || "indore" )
+    if @city.present?
+      @cinemas = @city.cinemas
+      @movies = @cinemas.map { |cinema| cinema.movies }.flatten
     end
   end
 
-  def new
-     @city = City.order(:name).pluck(:name,:id)
-     #@city = City.find_by(id: params[:id])
+  def search_movie
+    @movies = Movie.where('name Like?' , "%#{params[:movie]}%")
+    @city = City.find_by_id(params[:city])
+    unless @movies.present?
+      redirect_to :search_movie_dashboards_path, notice: "colud not found here"
+    end
   end
 end
+

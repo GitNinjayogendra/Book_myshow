@@ -1,0 +1,42 @@
+<h1> select your seat for this show </h1>
+
+<div class="row">
+  <% @seats.each do |seat| %>
+    <div class="col-md-1">
+      <div class="card" id = "seat-num" onclick="selectSeat()">
+        <div class="card-body">
+          <a class="seat-num" href=""><%= seat.seatnumber%></a>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<script>
+$('.seat-num').click(function(e) {
+  e.preventDefault();
+  var t = $(this).text();
+  alert(t);
+  <%# $('#output').html(t); %>
+
+});
+</script>
+
+
+
+ <%# <script type="text/javascript">
+   function selectSeat(){
+     var seat = selectSeat.getElementById('seat').value;
+       $.ajax({
+         url: "/seats/show_seat",
+         type: "GET",
+         dataType: ''script'',
+         data: {
+           seat: seat,
+          },
+          success: function(data) {
+           },
+    });
+  }
+</script> %>
+

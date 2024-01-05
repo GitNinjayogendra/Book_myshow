@@ -1,16 +1,10 @@
-<h1>select your seat for this show </h1>
+<h1>seats information </h1>
 
-
-  <div class="row">
-    <% @seats.each do |seat| %>
-      <div class="col-md-1">
-        <div class="card" >
-          <div class="card-body">
-            <h5 class="card-text"><%= seat.seatnumber %></h5>
-          </div>
-        </div>
-      </div>
-    <% end %>
-  </div>
-
+<ul>
+  <% @seats.each do |seat| %>
+    <li><%=seat.seatnumber %></li>
+  <% end %>
+</ul>
+<%= link_to 'New Seat', new_seat_path(@seat) %>
+<%#= link_to 'Back', cinemas_path %>
 

@@ -1,19 +1,62 @@
-<% if user_signed_in? %> 
- <div> Welcome <%= current_user.email %> </div> 
-   <%= button_to "Sign out", destroy_user_session_path, method: :delete %>
+<% if user_signed_in? %>
+  <div>
+    Welcome <%= current_user.email %>
+    <%= button_to "Sign out", destroy_user_session_path, method: :delete %>
+  </div>
 <% else %>
-  <%= button_to "Sign in", new_user_session_path %> 
+  <%= button_to "Sign in", new_user_session_path %>
 <% end %>
 
-<%if user_signed_in? %>
-  <ul>
-    <%= form_with url:  movies_path, local: true, method: :get do |f| %>
-      <div class="form-group">
-        <h1>select your cinema</h1>
-          <%= f.label :cinemaname %>
-          <%= f.select :id, options_for_select(@cinema),{},{class: "form-select form-select-lg mb-3"}%>
+<%= render partial: "shared/city" %>
+
+<div class="form-group">
+  <input type="text"  name="movie" id="movies" value = '' placeholder = "search for your movie" />
+  <button onclick="showMovie()">search</button>
+</div>
+
+
+<div class="row">
+  <% @movies.each do |movie| %>
+    <div class="col-md-2">
+      <div class="card" style="height: 400px; width: 300px; margin: 20px;">
+        <% if movie.avatar.attached? %>
+          <%= image_tag(url_for(movie.avatar)) %>
+        <% end %>
+        <div class="card-body">
+          <h5 class="card-title">movie name: <%= movie.name %></h5>
+          <h5 class="card-text">movie description: <%= movie.description %></h5>
+          <p class="card-text"><%= link_to "Book Ticket", show_cinema_cinemas_path(movie_id: movie.id, city_id: @city.id) %></p>
+        </div>
       </div>
-    <%= f.submit 'select', class: "btn btn-primary btn-block mt-2" %>
-    <% end %>
-  </ul>
-<% end %>
+    </div>
+  <% end %>
+</div>
+
+<script type="text/javascript">
+function showMovie(){
+    var movie = document.getElementById('movies').value;
+    var city = "<%= @city.id %>"
+    $.ajax({
+      url: "/dashboards/search_movie",
+      type: "GET",
+      dataType: 'script',
+      data: {
+        movie: movie,
+        city: city
+      },
+      success: function(data) {
+      },
+      error: function(error) {
+        alert('Could not found');
+        }
+    });
+  }
+</script>
+
+
+
+
+
+
+
+

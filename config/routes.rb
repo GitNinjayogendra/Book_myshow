@@ -9,11 +9,18 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   root to: "dashboards#index"
-  resources :dashboards
+  resources :dashboards do
+    get 'search_movie', on: :collection
+  end
   resources :movies
-  resources :cinemas
   resources :cities
+  resources :cinemas do
+    get 'show_cinema', on: :collection
+  end
   resources :showtimes
-  resources :seats
+  resources :seats do
+    get 'show_seat', on: :collection
+  end
   devise_for :users, controllers: { sessions: 'users/sessions' }
+  get '/search', to: 'dashboards#autocomplete'
 end

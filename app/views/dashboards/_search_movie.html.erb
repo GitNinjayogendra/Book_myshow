@@ -1,0 +1,21 @@
+<% flash.each do |type, msg| %>
+  <div>
+    <%= msg %>
+  </div>
+<% end %>
+<div class="row">
+  <% @movies.each do |movie| %>
+    <div class="col-md-2">
+      <div class="card" style="height: 400px; width: 300px; margin: 20px;">
+        <% if movie.avatar.attached? %>
+          <%= image_tag(url_for(movie.avatar)) %>
+        <% end %>
+        <div class="card-body">
+          <h5 class="card-title">movie name: <%= movie.name %></h5>
+          <h5 class="card-text">movie description: <%= movie.description %></h5>
+          <p class="card-text"><%= link_to "Book Ticket", show_cinema_cinemas_path(movie_id: movie.id, city_id: @city.id) %></p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

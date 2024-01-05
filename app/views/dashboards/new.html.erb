@@ -9,3 +9,92 @@
     <%= submit_tag 'select', class: "btn btn-primary btn-block mt-2" %>
 <% end %>
 
+
+
+<%#if user_signed_in? %>
+  <#ul>
+    <%#= form_with url:  movies_path, local: true, method: :get do |f| %>
+      <#div class="form-group">
+        <#h1>select your cinema<#/h1>
+          <%#= f.label :cinemaname %>
+          <%#= f.select :id, options_for_select(@cinema),{},{class: "form-select form-select-lg mb-3"}%>
+      </#div>
+    <%#= f.submit 'select', class: "btn btn-primary btn-block mt-2" %>
+    <%# end %>
+  </#ul>
+<%# end %>
+
+<% <div class="row">
+  <% @cinemas.each do |cinema| %>
+    <div class="col-md-1">
+      <p><%= cinema.name %></p>
+    </div>
+  <% end %>
+
+  <% @showtimes.each do |showtime| %>
+    <div class="col-md-1">
+      <%= link_to seats_path(cinema_id: showtime.cinema_id) do %>
+        <div class="card">
+          <div class="card-body">
+            <p class="card-text"><%= showtime.startime.strftime('%I:%M %p') %></p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
+
+#form
+<%#= form_with model: @cinema do |form| %>
+  <div>
+    <%#= form.label :name  %>
+    <%#= form.text_field :name %>
+  </div>
+  <div class="form-group">
+    <h1>select your city of cinema</h1>
+      <%#= form.label :city_id %>
+      <%#= select_tag :city, options_from_collection_for_select(City.all, :id, :name), {prompt: 'Select City'} %>
+  </div>
+
+  <div>
+    <%#= form.submit %>
+  </div> %>
+<% end %>
+
+#cinema new
+<%# <h1>New Cinema</h1> %>
+
+<%#= render "form", cinema: @cinema %>
+
+#cinema show
+<#p>Cinema name:<%#= @cinema.name %><#/p>
+
+<#ul>
+  <#li><%#= link_to "Edit", edit_cinema_path(@cinema) %></li>
+  <#li><%#= button_to "Destroy", cinema_path(@cinema), method: :delete, data: { confirm: 'Are you sure?'} %></li>
+<#/ul>
+
+  #edit cinema
+  <%# <h1>edit Cinema</h1> %>
+
+<%#= render "form", cinema: @cinema %>
+
+
+# cinema index
+#@movie = Movie.find_by(id: params[:movie_id])
+     #@city  = City.find_by(id: params[:city_id])
+     #cinema = @city.cinemas
+     #@cinemas = cinema.joins(:cinema_movies).where(cinema_movies: {movie_id: params[:movie_id]})
+     #@showtimes = @cinemas.map{|i| i.showtimes}.flatten
+     #cinema_id = params[:cinema_id]
+
+# dashboard condition
+
+  #@city = City.find_by_name("indore")
+         #@cinema = @city.cinemas
+         #@movies = @cinema.map{|i| i.movies}.flatten
+
+#extra query
+if params[:city].present?
+         city = City.find_by(name: params[:city])

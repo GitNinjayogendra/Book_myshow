@@ -1,8 +1,8 @@
 <div class= "row">
-    <div class = "col-md-1"><%= @movie.name%></div>
+    <div class = "col-md-1"><%= @cinema.name%></div>
       <%@showtimes.each do |showtime|%>
           <div class= "col-md-1">
-            <%= link_to seats_path(cinema_id: @cinema_id) do %>
+            <%#= link_to seats_path(cinema_id: @cinema_id) do %>
               <div class="card">
                 <div class="card-body">
                   <p class="card-text"><%= showtime.startime.strftime('%I:%M %p')%></p>
@@ -19,3 +19,11 @@
 
 
 
+<%= form_with url:showtimes_path, local: true, method: :get do |f| %>
+  <div class="form-group">
+    <h1>select Cinema</h1>
+      <%= f.label :cinemaname %>
+      <%= f.select :id, options_for_select(@cinemas.pluck(:name)),{},{class: "form-select form-select-lg mb-3"}%>
+  </div>
+    <%= submit_tag 'select', class: "btn btn-primary btn-block mt-2" %>
+<% end %>

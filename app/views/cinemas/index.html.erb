@@ -1,9 +1,21 @@
-<h1>Cinema information</h1>
-  <ul>
-  <% @cinema.each do |cinema| %>
-    <li><%= link_to cinema.name, cinema %></li>
-  <% end %>
-  </ul>
-<%= link_to "New Cinema", new_cinema_path %>
+ <h1>All Cinema</h1>
 
+<%= link_to "new cinema",  new_cinema_path %>
+  <table>
+    <thead>
+      <tr>
+        <th>cinema name</th>
+        <th>action </th>
+      <tr>
+    </thead>
 
+    <tbody>
+      <% @cinemas.each do |cinema| %>
+        <tr>
+          <td><%= cinema.name %></td>
+          <td><%= link_to "view", cinema%></td>
+          <td><%#= link_to "Edit", edit_cinema_path(@cinema) %></td>
+        <tr>
+      <% end %>
+    </tbody>
+  </table>

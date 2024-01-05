@@ -2,6 +2,10 @@ class SeatsController < ApplicationController
   before_action :current_seat, only: [:show, :edit, :update, :destroy]
 
   def index
+    @seats = Seat.all
+  end
+
+  def show_seat
     @cinema = Cinema.find_by(id:params[:cinema_id])
     @seats = @cinema.seats
   end
@@ -38,7 +42,7 @@ class SeatsController < ApplicationController
 
   private
   def seats_params
-    params.require(:seat).permit(:seatnumber, :status)
+    params.require(:seat).permit(:seatnumber, :status, :cinema_id)
   end
 
   def current_seat

@@ -1,10 +1,18 @@
-<%= form_with model: @cinema do |form| %>
-  <div>
-    <%= form.label :name  %>
+<%= form_with model:  @cinema do |form| %>
+
+  <div class="field">
+    <%= form.label :name %>
     <%= form.text_field :name %>
   </div>
-
-  <div>
-    <%= form.submit %>
+  <br></br>
+  <div class="form-group">
+    <h1>select your city of cinema</h1>
+      <%= form.label :city_id %>
+      <%= form.collection_select :city_id, City.order(:name),:id,:name %>
   </div>
+      <br></br>
+   <div class="actions">
+     <%= form.submit %>
+   </div>
+
 <% end %>

@@ -16,7 +16,7 @@ class CitiesController < ApplicationController
     @city = City.new(city_params)
 
     if @city.save
-      redirect_to @city
+      redirect_to cities_path
     else
       render :new, status: :unprocessable_entity
     end
@@ -27,7 +27,7 @@ class CitiesController < ApplicationController
 
   def update
     if @city.update(city_params)
-      redirect_to @city
+      redirect_to  @city
     else
       render :edit, status: :unprocessable_entity
     end

@@ -2,7 +2,16 @@ class CinemasController < ApplicationController
   before_action :current_cinema, only: [:show, :edit, :update, :destroy]
 
   def index
-      @cinema = Cinema.all
+     @cinemas = Cinema.all
+  end
+
+  def show_cinema
+    @movie = Movie.find_by(id: params[:movie_id])
+    @city  = City.find_by(id: params[:city_id])
+    cinema = @city.cinemas
+    @cinemas = cinema.joins(:cinema_movies).where(cinema_movies: {movie_id: params[:movie_id]})
+    @showtimes = @cinemas.map{|i| i.showtimes}.flatten
+    cinema_id = params[:cinema_id]
   end
 
   def show
@@ -15,7 +24,7 @@ class CinemasController < ApplicationController
   def create
     @cinema = Cinema.new(cinema_params)
       if @cinema.save
-        redirect_to @cinema
+        redirect_to cinemas_path
       else
         render :new, status: :unprocessable_entity
       end
@@ -26,7 +35,7 @@ class CinemasController < ApplicationController
 
   def update
     if @cinema.update(cinema_params)
-      redirect_to @cinema
+      redirect_to cinemas_path
     else
       render :edit, status: :unprocessable_entity
     end
@@ -38,8 +47,8 @@ class CinemasController < ApplicationController
   end
 
   private
-  def city_params
-    params.require(:cinema).permit(:name)
+  def cinema_params
+    params.require(:cinema).permit(:name,:city_id)
   end
 
   def current_cinema

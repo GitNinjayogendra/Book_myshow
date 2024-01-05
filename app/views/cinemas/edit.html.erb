@@ -1,3 +1,5 @@
-<h1>edit Cinema</h1>
+<h1>Edit Cinema</h1>
 
-<%= render "form", city: @cinema %>
+<%= render "form" , cinema: @cinema %>
+
+<%= link_to 'Back', cinemas_path(@cinema) %>

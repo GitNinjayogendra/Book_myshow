@@ -7,9 +7,10 @@
     <%= form.text_field :seatnumber %>
   </div>
 
-  <div>
-    <%= form.label :status %>
-    <%= form.text_field :status %>
+  <div class="form-group">
+    <h1>select your cinema for seat</h1>
+      <%= form.label :cinema_id %>
+      <%= form.collection_select :cinema_id, Cinema.order(:name),:id,:name %>
   </div>
 
   <div>
