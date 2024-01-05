@@ -7,13 +7,25 @@
 
   <% @showtimes.each do |showtime| %>
     <div class="col-md-1">
-      <%= link_to   show_seat_seats_path(cinema_id: showtime.cinema_id) do %>
+      <%= form_tag("/seats/show_seat", method: "get") do %>
+        <%= hidden_field_tag 'cinema_id', @cinemas[0].id  %>
         <div class="card">
           <div class="card-body">
             <p class="card-text"><%= showtime.startime.strftime('%I:%M %p') %></p>
           </div>
         </div>
+      <%= submit_tag("Search") %>
       <% end %>
     </div>
   <% end %>
 </div>
+
+
+<%#= link_to  show_seat_seats_path(cinema_id: @cinemas[0].id) do %>
+        <%#= hidden_field_tag 'cinema_id', @cinemas[0].id  %>
+        <%# <div class="card"> %>
+          <%# <div class="card-body"> %>
+            <%# <p class="card-text"><%= showtime.startime.strftime('%I:%M %p') %>
+          <%# </div> %>
+        <%# </div> %>
+      <%# end %>

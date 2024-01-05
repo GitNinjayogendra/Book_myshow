@@ -10,8 +10,7 @@ class CinemasController < ApplicationController
     @city  = City.find_by(id: params[:city_id])
     cinema = @city.cinemas
     @cinemas = cinema.joins(:cinema_movies).where(cinema_movies: {movie_id: params[:movie_id]})
-    @showtimes = @cinemas.map{|i| i.showtimes}.flatten
-    cinema_id = params[:cinema_id]
+    @showtimes = @movie.showtimes
   end
 
   def show

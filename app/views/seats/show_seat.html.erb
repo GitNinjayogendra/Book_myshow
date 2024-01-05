@@ -3,40 +3,24 @@
 <div class="row">
   <% @seats.each do |seat| %>
     <div class="col-md-1">
-      <div class="card" id = "seat-num" onclick="selectSeat()">
+      <div class="card">
         <div class="card-body">
-          <a class="seat-num" href=""><%= seat.seatnumber%></a>
+          <a id="seat-num" href="" value = '' onclick="myFunction()"><%= seat.seatnumber %></a>
         </div>
       </div>
     </div>
   <% end %>
 </div>
 
-<script>
-$('.seat-num').click(function(e) {
-  e.preventDefault();
-  var t = $(this).text();
-  alert(t);
-  <%# $('#output').html(t); %>
+<script type="text/javascript">
+  function myFunction()
+  const count = document.getElementById("seat-num").innerHTML;
 
-});
+// Variable to track count
+  var array = [];
+  debugger
+  array.push(count)
+  console.log(array)
+
 </script>
-
-
-
- <%# <script type="text/javascript">
-   function selectSeat(){
-     var seat = selectSeat.getElementById('seat').value;
-       $.ajax({
-         url: "/seats/show_seat",
-         type: "GET",
-         dataType: ''script'',
-         data: {
-           seat: seat,
-          },
-          success: function(data) {
-           },
-    });
-  }
-</script> %>
 

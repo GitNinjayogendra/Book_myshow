@@ -3,7 +3,7 @@ class CreateShowtimes < ActiveRecord::Migration[7.0]
     create_table :showtimes do |t|
       t.datetime :startime
       t.belongs_to :movie , foreign_key: true
-      t.belongs_to :cinema , foreign_key: true
+
 
       t.timestamps
     end
