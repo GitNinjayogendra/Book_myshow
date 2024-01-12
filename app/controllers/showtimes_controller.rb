@@ -2,9 +2,7 @@ class ShowtimesController < ApplicationController
   before_action :current_show, only: [:show, :edit, :update, :destroy]
 
   def index
-    #@movie = Movie.find_by_id(params[:movie_id])
-    #@cinema_id = Cinema.find(params[:cinema_id])
-    #@showtimes = @movie.showtimes
+    @showtimes = Showtime.all
   end
 
   def show

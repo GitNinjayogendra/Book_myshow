@@ -6,6 +6,7 @@ class SeatsController < ApplicationController
   end
 
   def show_seat
+    @showtime = params[:showtime_id]
     @cinema = Cinema.find_by(id: params[:cinema_id])
     @seats = @cinema.seats
   end

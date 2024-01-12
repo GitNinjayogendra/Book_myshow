@@ -1,35 +1,4 @@
 
-<%# <div class="form-group">
-  <input type="select"  name="seat" id="seat" value = '' onclick="selectSeat()"/>
-</div> %>
 
-<h1>select your seat for this show </h1>
-<br></br>
-  <div class="row">
-    <% @seats.each do |seat| %>
-      <div class="col-md-1">
-        <div class="card" >
-          <div class="card-body">
-            <h5 class="card-text"><%= seat.seatnumber %></h5>
-          </div>
-        </div>
-      </div>
-    <% end %>
-  </div>
 
-<%# <script type="text/javascript">
-function selectSeat(){
-    var seat = document.getElementById('seat').value;
-    $.ajax({
-      url: "/seats/show_seat",
-      type: "GET",
-      dataType: 'JSON',
-      data: {
-        seat: seat,
-      },
-      success: function(data) {
-      },
 
-    });
-  }
-</script> %>

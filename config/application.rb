@@ -20,5 +20,9 @@ module OnlineTicketBooking
     #config.time_zone = Time.now.zone
     #config.time_zone = "Singapore"
     # config.eager_load_paths << Rails.root.join("extras")
+  #config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.default_url_options = { host: 'http://localhost:4000/' }
+  # SMTP settings for gmail
+
   end
 end

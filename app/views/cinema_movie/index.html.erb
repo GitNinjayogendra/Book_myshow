@@ -1,0 +1,25 @@
+<h1>All cinemas and movies</h1>
+
+<%= link_to "new_cinema_movie_path", new_cinema_movie_path %>
+  <table>
+    <thead>
+      <tr>
+        <th>movie name</th>
+        <th>cinema name </th>
+        <th>Action</th>
+      <tr>
+    </thead>
+
+    <tbody>
+      <% @cinema_movies.each do |cinema_movie| %>
+        <tr>
+          <%# binding.pry %>
+          <td><%= cinema_movie.movie.name %></td>
+          <td><%= cinema_movie.cinema.name %></td>
+          <td><%#= link_to "view", cinema_movie %></td>
+          <td><%= link_to "edit", edit_cinema_movie_path(@cinema_movie) %></td>
+          <td><%= button_to "Destroy", cinema_movie_path(@cinema_movie), method: :delete, data: { confirm: 'Are you sure?'} %></td>
+        <tr>
+      <% end %>
+    </tbody>
+  </table>

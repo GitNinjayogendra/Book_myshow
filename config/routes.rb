@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   resources :seats do
     get 'show_seat', on: :collection
   end
-  devise_for :users, controllers: { sessions: 'users/sessions' }
-  get '/search', to: 'dashboards#autocomplete'
+  devise_for :users, controllers: { sessions: 'users/sessions' ,:registrations => "users/registrations"}
+  post '/show_seat', to: 'show_seats#create'
+  resources :cinema_movie
 end

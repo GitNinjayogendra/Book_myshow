@@ -1,26 +1,64 @@
-<h1> select your seat for this show </h1>
-
+<h1> Select your seat for this show </h1>
 <div class="row">
   <% @seats.each do |seat| %>
     <div class="col-md-1">
       <div class="card">
         <div class="card-body">
-          <a id="seat-num" href="" value = '' onclick="myFunction()"><%= seat.seatnumber %></a>
+          <a class="seat-link" href="" data-seat-number="<%= seat.seatnumber %>"><%= seat.seatnumber %></a>
         </div>
       </div>
     </div>
   <% end %>
 </div>
 
+<%#binding.pry %>
+<div class = "action">
+  <input type ="submit"  name="seat" id="seat" value = '' />
+    <%= hidden_field_tag 'showtime_id', params[:showtime_id], id: "showtime_field"  %>
+    <%= hidden_field_tag 'movie_id', params[:movie_id] , id: "movie_field"%>
+    <%= hidden_field_tag 'cinema_id', params[:cinema_id], id: "cinema_field" %>
+  <button onclick ="seatNumber()">sumbit</button>
+</div>
+
 <script type="text/javascript">
-  function myFunction()
-  const count = document.getElementById("seat-num").innerHTML;
-
-// Variable to track count
-  var array = [];
-  debugger
-  array.push(count)
-  console.log(array)
-
+  var selectedSeats = [];
+  document.addEventListener('DOMContentLoaded', function() {
+    var seatLinks = document.querySelectorAll('.seat-link');
+    seatLinks.forEach(function(seatLink) {
+      seatLink.addEventListener('click', function(event) {
+        seatLink.classList.add('myClass');
+        event.preventDefault();
+        var seatNumber = this.getAttribute('data-seat-number');
+        if (selectedSeats.includes(seatNumber)) {
+          selectedSeats = selectedSeats.filter(function(seat) {
+            return seat !== seatNumber;
+          });
+        } else {
+          selectedSeats.push(seatNumber);
+        }
+      });
+    });
+  });
+function seatNumber(){
+ debugger
+  var seat =  document.getElementById("showtime_field").value;
+  var movie = document.getElementById("movie_field").value;
+  var cinema = document.getElementById("cinema_field").value;
+    $.ajax({
+      url: "/show_seat",
+      type: "POST",
+      dataType: 'script',
+      data: {seats: selectedSeats, showtime: seat, movie: movie, cinema: cinema},
+      success: function(data) {
+      },
+    });
+  }
 </script>
 
+<style type="text/css">
+  .myClass {
+  background-color: red;
+  color: white;
+  font-size: 20px;
+}
+</style>

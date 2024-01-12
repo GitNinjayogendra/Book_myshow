@@ -3,7 +3,7 @@ class DashboardsController < ApplicationController
     @city = City.find_by_name(params[:city] || "indore" )
     if @city.present?
       @cinemas = @city.cinemas
-      @movies = @cinemas.map { |cinema| cinema.movies }.flatten
+      @movies = @cinemas.map { |cinema| cinema.movies }.flatten.uniq
     end
   end
 

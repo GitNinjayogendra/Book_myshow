@@ -1,4 +1,5 @@
 source "https://rubygems.org"
+gem 'dotenv-rails', groups: [:development, :test]
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "3.2.2"
@@ -62,6 +63,7 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
+  gem "letter_opener", group: :development
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"

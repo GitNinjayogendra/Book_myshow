@@ -3,29 +3,18 @@
     <div class="col-md-1">
       <p><%= cinema.name %></p>
     </div>
-  <% end %>
-
-  <% @showtimes.each do |showtime| %>
-    <div class="col-md-1">
-      <%= form_tag("/seats/show_seat", method: "get") do %>
-        <%= hidden_field_tag 'cinema_id', @cinemas[0].id  %>
-        <div class="card">
-          <div class="card-body">
-            <p class="card-text"><%= showtime.startime.strftime('%I:%M %p') %></p>
+    <% @showtimes.each do |showtime| %>
+      <div class="col-md-1">
+      <%#binding.pry %>
+        <%= link_to  show_seat_seats_path(cinema_id: @cinemas[0].id, showtime_id: showtime.id, movie_id: @movie.id) do %>
+        <%= hidden_field_tag 'cinema_id', @cinemas[0].id %>
+          <div class="card">
+            <div class="card-body">
+              <p class="card-text showtime" href= "" ><%= showtime.startime.strftime('%I:%M %p') %></p>
+            </div>
           </div>
-        </div>
-      <%= submit_tag("Search") %>
-      <% end %>
-    </div>
+        <% end %>
+      </div>
+    <% end %>
   <% end %>
 </div>
-
-
-<%#= link_to  show_seat_seats_path(cinema_id: @cinemas[0].id) do %>
-        <%#= hidden_field_tag 'cinema_id', @cinemas[0].id  %>
-        <%# <div class="card"> %>
-          <%# <div class="card-body"> %>
-            <%# <p class="card-text"><%= showtime.startime.strftime('%I:%M %p') %>
-          <%# </div> %>
-        <%# </div> %>
-      <%# end %>

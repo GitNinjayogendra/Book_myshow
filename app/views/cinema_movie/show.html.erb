@@ -1,0 +1,7 @@
+<%# <% binding.pry %>
+<p>cinema name:<%= @cinema_movie.cinema.name %></p>
+<p>movie name:<%= @cinema_movie.movie.name %></p>
+
+<%= link_to "edit", edit_cinema_movie_path(@cinema_movie) %>
+<%= button_to "Destroy", cinema_movie_path(@cinema), method: :delete, data: { confirm: 'Are you sure?'} %>
+<%= link_to "back", cinema_movie_index_path %> %>

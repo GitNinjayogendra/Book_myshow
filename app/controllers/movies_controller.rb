@@ -3,8 +3,6 @@ class MoviesController < ApplicationController
 
   def index
     @movies = Movie.all
-    #@cinema = Cinema.find_by(id: params[:id])
-    #@movies = @cinema.movies
   end
 
   def show
