@@ -1,4 +1,5 @@
 <h1> Select your seat for this show </h1>
+
 <div class="row">
   <% @seats.each do |seat| %>
     <div class="col-md-1">
@@ -11,49 +12,64 @@
   <% end %>
 </div>
 
-<%#binding.pry %>
 <div class = "action">
-  <input type ="submit"  name="seat" id="seat" value = '' />
+   <div type="" name="seatNumber" id = "price" ></div>
     <%= hidden_field_tag 'showtime_id', params[:showtime_id], id: "showtime_field"  %>
     <%= hidden_field_tag 'movie_id', params[:movie_id] , id: "movie_field"%>
     <%= hidden_field_tag 'cinema_id', params[:cinema_id], id: "cinema_field" %>
-  <button onclick ="seatNumber()">sumbit</button>
+    <%= hidden_field_tag 'price_value', id: "price_value" %>
+   <button onclick ="seatNumber()">sumbit</button>
 </div>
+
 
 <script type="text/javascript">
   var selectedSeats = [];
+  var seatPrice = 100;
+  var price = [];
   document.addEventListener('DOMContentLoaded', function() {
     var seatLinks = document.querySelectorAll('.seat-link');
     seatLinks.forEach(function(seatLink) {
       seatLink.addEventListener('click', function(event) {
-        seatLink.classList.add('myClass');
+       seatLink.parentElement.classList.toggle('myClass');
         event.preventDefault();
-        var seatNumber = this.getAttribute('data-seat-number');
-        if (selectedSeats.includes(seatNumber)) {
-          selectedSeats = selectedSeats.filter(function(seat) {
-            return seat !== seatNumber;
-          });
-        } else {
-          selectedSeats.push(seatNumber);
-        }
+          var seatNumber = this.getAttribute('data-seat-number');
+          if (selectedSeats.includes(seatNumber)) {
+            selectedSeats = selectedSeats.filter(function(seat) {
+              return seat !== seatNumber;
+            });
+          }else {
+            selectedSeats.push(seatNumber);
+          }
+            updateTotalPrice();
+        });
       });
     });
-  });
-function seatNumber(){
- debugger
-  var seat =  document.getElementById("showtime_field").value;
+
+  function updateTotalPrice() {
+    var totalPrice = selectedSeats.length * seatPrice;
+    var price = document.getElementById('price').innerText = totalPrice.toFixed(2);
+    debugger
+    document.getElementById('price_value').value = price;
+  }
+
+  function seatNumber(){
+  var showtime =  document.getElementById("showtime_field").value;
   var movie = document.getElementById("movie_field").value;
   var cinema = document.getElementById("cinema_field").value;
+  var price = document.getElementById("price_value").value;
+
     $.ajax({
       url: "/show_seat",
       type: "POST",
       dataType: 'script',
-      data: {seats: selectedSeats, showtime: seat, movie: movie, cinema: cinema},
+      data: {seats: selectedSeats, showtime: showtime, movie: movie, cinema: cinema, price: price},
       success: function(data) {
       },
     });
   }
+
 </script>
+
 
 <style type="text/css">
   .myClass {
@@ -62,3 +78,5 @@ function seatNumber(){
   font-size: 20px;
 }
 </style>
+
+<%#= link_to "back",  show_cinema_cinemas_path() %>

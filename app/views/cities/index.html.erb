@@ -13,7 +13,8 @@
       <% @cities.each do |city| %>
         <tr>
           <td><%= city.name %></td>
-          <td><%= link_to "view", city%></td>
+          <td><%= link_to "edit", edit_city_path(city) %></td>
+          <td><%= button_to "Destroy", city, method: :delete, data: { confirm: 'Are you sure?'} %></td>
       <% end %>
     </tbody>
   </table>

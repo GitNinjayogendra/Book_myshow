@@ -1,9 +1,0 @@
-<p>movie name:<%= @movie.name %></p>
-<p>movie description:<%= @movie.description %></p>
-<p>movie duration   :<%= @movie.duration %></p>
-
-
-<ul>
-  <li><%= link_to "Edit", edit_movie_path(@movie) %></li>
-  <li><%= button_to "Destroy", movie_path(@movie), method: :delete, data: { confirm: 'Are you sure?'} %></li>
-</ul>

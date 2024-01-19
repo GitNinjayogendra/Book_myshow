@@ -1,6 +1,6 @@
-<%= form_with model: @cinema_movie do |form| %>
+<%= form_with url: '/cinema_movie', method: :post do |form| %>
 
-   <div class="form-group">
+  <div class="form-group">
     <h1>select your cinema</h1>
       <%= form.label :cinema_id %>
       <%= form.collection_select :cinema_id, Cinema.order(:name),:id,:name %>
@@ -12,10 +12,9 @@
     <%= form.collection_select :movie_id, Movie.order(:name),:id,:name %>
   <div>
 
-   <%# binding.pry %>
-   <div class = "action">
+  <div class = "action">
      <%= form.submit %>
-   </div>
+  </div>
 
    <%= link_to "back", cinema_movie_index_path %>
 <% end %>

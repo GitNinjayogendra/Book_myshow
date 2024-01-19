@@ -88,6 +88,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_12_074430) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "status"
+    t.float "price"
     t.index ["cinema_id"], name: "index_show_seats_on_cinema_id"
     t.index ["movie_id"], name: "index_show_seats_on_movie_id"
     t.index ["seat_id"], name: "index_show_seats_on_seat_id"

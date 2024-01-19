@@ -15,7 +15,7 @@ class User < ApplicationRecord
 
   private
     def send_email
-      MailerJob.perform_later(self)
+      MailerWorker.perform_async(self.id)
       puts "mail is send"
     end
 end

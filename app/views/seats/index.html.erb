@@ -1,10 +1,19 @@
-<h1>seats information </h1>
+<h1>seat information </h1>
 
-<ul>
-  <% @seats.each do |seat| %>
-    <li><%=seat.seatnumber %></li>
-  <% end %>
-</ul>
-<%= link_to 'New Seat', new_seat_path(@seat) %>
-<%#= link_to 'Back', cinemas_path %>
+<%= link_to "new seat",    new_seat_path %>
+  <table>
+    <thead>
+      <tr>
+        <th>seatnumber</th>
+        <th>Action</th>
+      <tr>
+    </thead>
 
+    <tbody>
+      <% @seats.each do |seat| %>
+        <tr>
+          <td><%= seat.seatnumber %></td>
+        <tr>
+      <% end %>
+    </tbody>
+  </table>

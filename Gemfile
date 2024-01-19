@@ -80,3 +80,5 @@ group :test do
 end
 
 gem 'pry'
+gem "sidekiq", "~> 7.2"
+gem 'redis'

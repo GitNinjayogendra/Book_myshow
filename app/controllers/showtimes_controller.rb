@@ -40,7 +40,7 @@ class ShowtimesController < ApplicationController
 
   private
   def show_params
-    params.require(:showtime).permit(:startime)
+    params.require(:showtime).permit(:startime, :movie_id)
   end
 
   def current_show

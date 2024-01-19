@@ -42,7 +42,7 @@ class CinemasController < ApplicationController
 
   def destroy
     @cinema.destroy
-    redirect_to root_path, status: :see_other
+    redirect_to cinemas_path, status: :see_other
   end
 
   private

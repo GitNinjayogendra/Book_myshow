@@ -17,7 +17,8 @@
           <td><%= movie.name %></td>
           <td><%= movie.description %></td>
           <td><%= movie.duration %><td>
-          <td><%= link_to "show", movie %></td>
+          <td><%= link_to "edit", edit_movie_path(movie) %></td>
+          <td><%= button_to "delete", movie %></td>
         <tr>
       <% end %>
     </tbody>

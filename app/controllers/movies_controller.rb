@@ -27,7 +27,7 @@ class MoviesController < ApplicationController
 
   def update
     if @movie.update(movie_params)
-      redirect_to @movie
+      redirect_to movies_path
     else
       render :edit, status: :unprocessable_entity
     end
@@ -35,12 +35,12 @@ class MoviesController < ApplicationController
 
   def destroy
     @movie.destroy
-    redirect_to root_path, status: :see_others
+    redirect_to movies_path, status: :see_others
   end
 
   private
   def movie_params
-    params.require(:movie).permit(:name, :description , :duration, :avatar, :cinema_id)
+    params.require(:movie).permit(:name, :description , :duration, :avatar,)
   end
 
   def current_movie

@@ -27,7 +27,7 @@ class CitiesController < ApplicationController
 
   def update
     if @city.update(city_params)
-      redirect_to  @city
+      redirect_to  cities_path
     else
       render :edit, status: :unprocessable_entity
     end
@@ -35,7 +35,7 @@ class CitiesController < ApplicationController
 
   def destroy
     @city.destroy
-    redirect_to root_path, status: :see_other
+    redirect_to cities_path, status: :see_other
   end
 
   private
