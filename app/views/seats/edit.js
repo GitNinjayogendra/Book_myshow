@@ -1,31 +1,7 @@
-<h1> Select your seat for this show </h1>
-
-<div class="row">
-  <% @seats.each do |seat| %>
-    <div class="col-md-1">
-      <div class="card">
-        <div class="card-body <%= 'myClass disable' if @booked_value.include?(seat.id) %>" >
-          <a class="seat-link" href="" data-seat-number="<%= seat.seatnumber %>"><%= seat.seatnumber %></a>
-        </div>
-      </div>
-    </div>
-  <% end %>
-</div>
-
-<div class = "action">
-   <div type="" name="seatNumber" id = "price" ></div>
-    <%= hidden_field_tag 'showtime_id', params[:showtime_id], id: "showtime_field"  %>
-    <%= hidden_field_tag 'movie_id', params[:movie_id] , id: "movie_field"%>
-    <% binding.pry %>
-    <%= hidden_field_tag 'cinema_id', params[:cinema_id], id: "cinema_field" %>
-    <%= hidden_field_tag 'price_value', id: "price_value" %>
-   <button onclick ="seatNumber()">sumbit</button>
-</div>
-
-<script type="text/javascript">
-  var selectedSeats = [];
+var selectedSeats = [];
   var seatPrice = 100;
   var price = [];
+  document.addEventListener('DOMContentLoaded', function() {
     var seatLinks = document.querySelectorAll('.seat-link');
     seatLinks.forEach(function(seatLink) {
       seatLink.addEventListener('click', function(event) {
@@ -42,7 +18,7 @@
             updateTotalPrice();
         });
       });
-
+    });
 
   function updateTotalPrice() {
     var totalPrice = selectedSeats.length * seatPrice;
@@ -55,7 +31,6 @@
   var movie = document.getElementById("movie_field").value;
   var cinema = document.getElementById("cinema_field").value;
   var price = document.getElementById("price_value").value;
-  debugger
 
     $.ajax({
       url: "/show_seat",
@@ -66,22 +41,3 @@
       },
     });
   }
-
-</script>
-
-
-<style type="text/css">
-  .myClass {
-  background-color: red;
-  color: white;
-  font-size: 20px;
-  }
-
-  .disable{
-    background-color: grey;
-    opacity: 0.5;
-    pointer-events: none;
-  }
-</style>
-
-

@@ -16,7 +16,7 @@ class ShowtimesController < ApplicationController
     @showtime = Showtime.create(show_params)
 
     if @showtime.save
-      redirect_to @showtime
+      redirect_to showtimes_path
     else
       render :new, status: :unprocessable_entity
     end
@@ -26,8 +26,9 @@ class ShowtimesController < ApplicationController
   end
 
   def update
+    binding.pry
     if @showtime.update(show_params)
-      redirect_to @showtime
+      redirect_to showtimes_path
     else
       render :edit, status: :unprocessable_entity
     end
@@ -46,4 +47,5 @@ class ShowtimesController < ApplicationController
   def current_show
     @showtime = Showtime.find(params[:id])
   end
+
 end

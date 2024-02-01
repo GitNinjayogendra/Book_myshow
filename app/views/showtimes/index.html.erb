@@ -1,2 +1,24 @@
+<h1>showtime information</h1>
+<% if current_user.role == "admin" %>
+<%= link_to "new showtime", new_showtime_path %>
+<table>
+    <thead>
+      <tr>
+        <th>startime</th>
+      <tr>
+    </thead>
 
+    <tbody>
+      <% @showtimes.each do |showtime| %>
+        <tr>
+          <td><%= showtime.startime.strftime('%I:%M %p') %></td>
+          <td><%= link_to "edit", edit_showtime_path(showtime) %></td>
+          <td><%= button_to "Destroy", showtime, method: :delete, data: { confirm: 'Are you sure?'} %></td>
+        <tr>
+      <% end %>
+    </tbody>
+</table>
+<% end %>
+
+<%= link_to "back", root_path %>
 

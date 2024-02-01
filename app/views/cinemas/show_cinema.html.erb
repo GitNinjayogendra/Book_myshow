@@ -5,12 +5,12 @@
     </div>
     <% @showtimes.each do |showtime| %>
       <div class="col-md-1">
-      <%#binding.pry %>
-        <%= link_to  show_seat_seats_path(cinema_id: @cinemas[0].id, showtime_id: showtime.id, movie_id: @movie.id) do %>
-        <%= hidden_field_tag 'cinema_id', @cinemas[0].id %>
+        <%= link_to  show_seat_seats_path(cinema_id: cinema.id, showtime_id: showtime.id, movie_id: @movie.id) do %>
+        <% binding.pry %>
+        <%= hidden_field_tag 'cinema_id', cinema.id %>
           <div class="card">
             <div class="card-body">
-              <p class="card-text showtime" href= "" ><%= showtime.startime.strftime('%I:%M %p') %></p>
+              <p class="card-text showtime"><%= showtime.startime.strftime('%I:%M %p')%>
             </div>
           </div>
         <% end %>
@@ -18,3 +18,14 @@
     <% end %>
   <% end %>
 </div>
+
+<%# <script type="text/javascript">
+function showCinema(){
+    var cinema = document.getElementByClassName('get_cinema').value;
+    document.getElementById('cinema_id').value = cinema;
+  }
+</script> %>
+
+<%#= link_to "back",root_path(@cinemas , @showtimes) %>
+
+<%# href= "" class="get_cinema" onClick='showCinema()' %>

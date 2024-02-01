@@ -35,7 +35,6 @@ gem "image_processing", ">= 1.2"
 gem 'cssbundling-rails'
 gem 'carrierwave'
 
-
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
 

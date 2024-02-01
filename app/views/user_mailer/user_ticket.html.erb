@@ -1,0 +1,7 @@
+<h1>Welcome  <%= @user.username %> to example.com, </h1>
+<p>hello user your ticket is conformed</p>
+<p>seatnumber:<%= @seat.map{|seat| seat.to_i} %></p>
+<p>showtime:<%= @data.fetch("showtime")%></p>
+<p>cinema name:<%= @data.fetch("cinema") %></p>
+<p>movie name:<%= @data.fetch('movie') %></p>
+<p>price: <%= @data.fetch("price") %></p>

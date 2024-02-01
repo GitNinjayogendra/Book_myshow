@@ -5,6 +5,12 @@
     <%= form.text_field :startime %>
   </div>
 
+  <div class="form-group">
+    <h1>select your movie for this show</h1>
+      <%= form.label :movie_id %>
+      <%= form.collection_select :movie_id, Movie.order(:name),:id,:name %>
+  </div>
+
   <div>
     <%= form.submit %>
   </div>

@@ -1,0 +1,10 @@
+class CreatePayments < ActiveRecord::Migration[7.0]
+  def change
+    create_table :payments do |t|
+      t.string :balance
+      t.string :reaming_balance
+
+      t.timestamps
+    end
+  end
+end

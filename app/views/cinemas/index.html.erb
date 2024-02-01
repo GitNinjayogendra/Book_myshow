@@ -1,6 +1,6 @@
  <h1>All Cinema</h1>
-
-<%= link_to "new cinema",  new_cinema_path %>
+<% if current_user.role == "admin" %>
+  <%= link_to "new cinema",  new_cinema_path %>
   <table>
     <thead>
       <tr>
@@ -19,3 +19,5 @@
       <% end %>
     </tbody>
   </table>
+<% end %>
+

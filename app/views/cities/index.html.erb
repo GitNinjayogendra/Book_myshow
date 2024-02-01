@@ -1,6 +1,6 @@
  <h1>All cities</h1>
-
-<%= link_to "new city", new_city_path %>
+<% if current_user.role == "admin" %>
+  <%= link_to "new city", new_city_path %>
   <table>
     <thead>
       <tr>
@@ -18,3 +18,6 @@
       <% end %>
     </tbody>
   </table>
+<% end %>
+
+<%= link_to "back", root_path %>

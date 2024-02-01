@@ -32,11 +32,6 @@
     <%= f.text_field :contactnumber %>
   <div>
   <br/>
-  <div class="form-group">
-    <%= f.label  :role %>
-    <%= f.select :role,  User.roles.keys.to_a %>
-  </div>
-
   <br/>
   <div class="actions">
     <%= f.submit "Sign up" %>

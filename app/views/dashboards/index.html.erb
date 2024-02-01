@@ -1,8 +1,19 @@
+<% if current_user.role == "admin" %>
+  <%= link_to "add city", cities_path %>
+  <br>
+  <%= link_to "add cinema", cinemas_path %>
+  <br>
+  <%= link_to "add movie", movies_path %>
+  <br>
+  <%= link_to "add seat", seats_path %>
+  <br>
+  <%= link_to "add showtime", showtimes_path %>
+<% end %>
+
 <% if user_signed_in? %>
   <div>
     Welcome <%= current_user.email %>
     <%= button_to "Sign out", destroy_user_session_path, method: :delete %>
-    <%# = button_to "edit",   edit_user_registration_path , method: :get %>
   </div>
 <% else %>
   <%= button_to "Sign in", new_user_session_path %>
@@ -26,6 +37,7 @@
         <div class="card-body">
           <h5 class="card-title">movie name: <%= movie.name %></h5>
           <h5 class="card-text">movie description: <%= movie.description %></h5>
+          <% binding.pry %>
           <p class="card-text"><%= link_to "Book Ticket", show_cinema_cinemas_path(movie_id: movie.id, city_id: @city.id) %></p>
         </div>
       </div>
@@ -53,6 +65,7 @@ function showMovie(){
     });
   }
 </script>
+
 
 
 

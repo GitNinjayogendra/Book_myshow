@@ -1,5 +1,6 @@
 class CinemasController < ApplicationController
   before_action :current_cinema, only: [:show, :edit, :update, :destroy]
+  #before_action :admin_user, only:[:show,:edit,:update,:destroy]
 
   def index
      @cinemas = Cinema.all
@@ -10,6 +11,7 @@ class CinemasController < ApplicationController
     @city  = City.find_by(id: params[:city_id])
     cinema = @city.cinemas
     @cinemas = cinema.joins(:cinema_movies).where(cinema_movies: {movie_id: params[:movie_id]})
+    binding.pry
     @showtimes = @movie.showtimes
   end
 
@@ -53,4 +55,8 @@ class CinemasController < ApplicationController
   def current_cinema
     @cinema = Cinema.find(params[:id])
   end
+
+  # def admin_user
+  #   if current_user.role == "admin"
+  # end
 end

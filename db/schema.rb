@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_12_074430) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_29_110140) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -71,6 +71,13 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_12_074430) do
     t.integer "duration"
   end
 
+  create_table "payments", force: :cascade do |t|
+    t.string "balance"
+    t.string "reaming_balance"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "seats", force: :cascade do |t|
     t.integer "seatnumber"
     t.string "status"
@@ -85,6 +92,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_12_074430) do
     t.integer "showtime_id"
     t.integer "movie_id"
     t.integer "cinema_id"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "status"
@@ -93,6 +101,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_12_074430) do
     t.index ["movie_id"], name: "index_show_seats_on_movie_id"
     t.index ["seat_id"], name: "index_show_seats_on_seat_id"
     t.index ["showtime_id"], name: "index_show_seats_on_showtime_id"
+    t.index ["user_id"], name: "index_show_seats_on_user_id"
   end
 
   create_table "showtimes", force: :cascade do |t|
@@ -113,7 +122,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_12_074430) do
     t.datetime "updated_at", null: false
     t.string "username"
     t.integer "contactnumber"
-    t.string "role"
+    t.integer "role", default: 0
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -128,5 +137,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_12_074430) do
   add_foreign_key "show_seats", "movies"
   add_foreign_key "show_seats", "seats"
   add_foreign_key "show_seats", "showtimes"
+  add_foreign_key "show_seats", "users"
   add_foreign_key "showtimes", "movies"
 end

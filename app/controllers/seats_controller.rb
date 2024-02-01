@@ -9,6 +9,8 @@ class SeatsController < ApplicationController
     @showtime = params[:showtime_id]
     @cinema = Cinema.find_by(id: params[:cinema_id])
     @seats = @cinema.seats
+    binding.pry
+    @booked_value = ShowSeat.status("booked", params[:showtime_id], params[:cinema_id]).pluck(:seat_id)
   end
 
   def show
@@ -22,7 +24,7 @@ class SeatsController < ApplicationController
   def create
     @seat = Seat.new(seat_params)
     if @seat.save
-      redirect_to @seat
+      redirect_to seats_path
     else
       render :new , status: :unprocessable_entity
     end
@@ -30,7 +32,7 @@ class SeatsController < ApplicationController
 
   def update
     if @seat.update(seat_params)
-      redirect_to @seat
+      redirect_to seats_path
     else
       render :edit, status: :unprocessable_entity
     end
@@ -42,7 +44,7 @@ class SeatsController < ApplicationController
   end
 
   private
-  def seats_params
+  def seat_params
     params.require(:seat).permit(:seatnumber, :status, :cinema_id)
   end
 

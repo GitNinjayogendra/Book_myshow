@@ -11,8 +11,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-    super
-     #mail = UserMailer.welcome_email(@user).deliver_now
+    super                                  # Call Devise's create
+    # account = current_user.account         # FAIL! (current_user is nil)
+    # account.partner_id = current_partner
+    # account.save!
   end
 
   # ...
