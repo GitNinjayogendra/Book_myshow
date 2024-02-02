@@ -1,12 +1,8 @@
 class CitiesController < ApplicationController
   before_action :current_city, only: [:show, :edit, :update, :destroy]
-  # before_action :admin_user, only:[:show,:edit,:update,:destroy]
 
   def index
     @cities = City.all
-  end
-
-  def show
   end
 
   def new
@@ -21,9 +17,6 @@ class CitiesController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
-  end
-
-  def edit
   end
 
   def update
@@ -47,8 +40,4 @@ class CitiesController < ApplicationController
   def current_city
     @city = City.find(params[:id])
   end
-
-  # def admin_user
-  #   if current_user.role == "admin"
-  # end
 end

@@ -3,10 +3,8 @@ class ShowSeatsController < ApplicationController
     seat_array = []
     @seats = params[:seats]
       params[:seats].each do |i|
-      seat = Seat.find_by(seatnumber: "#{i}").id && params[:cinema]
-      binding.pry
-      @seat = ShowSeat.create(seat_id: Seat.find_by(seatnumber: "#{i}").id,
-      showtime_id: params[:showtime], cinema_id: params[:cinema], movie_id: params[:movie], price: params[:price], status: 'booked')
+      @seat = ShowSeat.create(seat_id: Seat.find_by(seatnumber: "#{i}", cinema_id: params[:cinema]).id,
+      showtime_id: params[:showtime], cinema_id: params[:cinema], movie_id: params[:movie], price: params[:price],status: 'booked')
     end
     @seat_array = @seats
     @data = {movie: @seat.movie.name, cinema: @seat.cinema.name, showtime: @seat.showtime.startime.strftime('%I:%M %p'), price: @seat.price}

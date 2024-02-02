@@ -5,9 +5,6 @@ class MoviesController < ApplicationController
     @movies = Movie.all
   end
 
-  def show
-  end
-
   def new
     @movie = Movie.new
   end
@@ -20,9 +17,6 @@ class MoviesController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
-  end
-
-  def edit
   end
 
   def update

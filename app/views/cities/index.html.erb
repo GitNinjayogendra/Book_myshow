@@ -1,4 +1,4 @@
- <h1>All cities</h1>
+<h1>All cities</h1>
 <% if current_user.role == "admin" %>
   <%= link_to "new city", new_city_path %>
   <table>
@@ -15,6 +15,7 @@
           <td><%= city.name %></td>
           <td><%= link_to "edit", edit_city_path(city) %></td>
           <td><%= button_to "Destroy", city, method: :delete, data: { confirm: 'Are you sure?'} %></td>
+        </tr>
       <% end %>
     </tbody>
   </table>

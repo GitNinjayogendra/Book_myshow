@@ -1,31 +1,45 @@
-<div class="row">
-  <% @cinemas.each do |cinema| %>
-    <div class="col-md-1">
-      <p><%= cinema.name %></p>
-    </div>
-    <% @showtimes.each do |showtime| %>
-      <div class="col-md-1">
-        <%= link_to  show_seat_seats_path(cinema_id: cinema.id, showtime_id: showtime.id, movie_id: @movie.id) do %>
-        <% binding.pry %>
-        <%= hidden_field_tag 'cinema_id', cinema.id %>
-          <div class="card">
-            <div class="card-body">
-              <p class="card-text showtime"><%= showtime.startime.strftime('%I:%M %p')%>
-            </div>
+<style>
+table, td{
+  border: 1px solid black;
+  border-collapse: collapse;
+  margin-left: 20px;
+}
+</style>
+
+<table>
+  <thead>
+    <tr style = "text-align: center;">
+      <th style="margin-left: 20px; border:1px solid black; border-collapse: collapse;" >cinema name </th>
+      <th>showtime </th>
+    <tr>
+  </thead>
+  <tbody>
+    <div class="row">
+      <% @cinemas.each do |cinema| %>
+      <tr>
+        <td><div class="col-md-1" style = "margin-left: 10px">
+          <p><%= cinema.name %></p>
+        </div></td>
+        <% @showtimes.each do |showtime| %>
+          <div class="col-md-1">
+            <td><%= link_to  show_seat_seats_path(cinema_id: cinema.id, showtime_id: showtime.id, movie_id: @movie.id) do %>
+            <%= hidden_field_tag 'cinema_id', cinema.id %>
+            <br>
+              <div class="card" style="margin: 20px;">
+                <div class="card-body">
+                  <p class="card-text showtime" href= "" ><%= showtime.startime.strftime('%I:%M %p') %></p>
+                </div>
+              </div>
+              <br>
+            <% end %></td>
           </div>
         <% end %>
-      </div>
-    <% end %>
-  <% end %>
-</div>
+      </tr>
+      <% end %>
+    </div>
+  </tbody>
+</table>
 
-<%# <script type="text/javascript">
-function showCinema(){
-    var cinema = document.getElementByClassName('get_cinema').value;
-    document.getElementById('cinema_id').value = cinema;
-  }
-</script> %>
+<%= button_to "back", root_path(@cinema, @showtime)%>
 
-<%#= link_to "back",root_path(@cinemas , @showtimes) %>
 
-<%# href= "" class="get_cinema" onClick='showCinema()' %>

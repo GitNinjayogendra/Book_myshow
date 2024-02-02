@@ -9,13 +9,8 @@ class SeatsController < ApplicationController
     @showtime = params[:showtime_id]
     @cinema = Cinema.find_by(id: params[:cinema_id])
     @seats = @cinema.seats
-    binding.pry
     @booked_value = ShowSeat.status("booked", params[:showtime_id], params[:cinema_id]).pluck(:seat_id)
   end
-
-  def show
-  end
-
 
   def new
     @seat = Seat.new

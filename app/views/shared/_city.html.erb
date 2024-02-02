@@ -7,7 +7,7 @@
 
  <%= form_with url:  dashboards_path, local: true, method: :get do |f| %>
    <div class="form-group">
-     <h1>select your city</h1>
+     <h3>select your city</h3>
        <%= f.label :name %>
        <%= f.select :city, options_for_select(City.all.pluck(:name), @city.name) %>
    </div>

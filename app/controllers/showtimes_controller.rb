@@ -5,9 +5,6 @@ class ShowtimesController < ApplicationController
     @showtimes = Showtime.all
   end
 
-  def show
-  end
-
   def new
     @showtime = Showtime.new
   end
@@ -22,11 +19,7 @@ class ShowtimesController < ApplicationController
     end
   end
 
-  def edit
-  end
-
   def update
-    binding.pry
     if @showtime.update(show_params)
       redirect_to showtimes_path
     else
