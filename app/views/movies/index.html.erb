@@ -1,31 +1,31 @@
-<h1>All Movies</h1>
 <% if current_user.role == "admin" %>
+  <h1>All Movies</h1>
   <%= link_to "new Movie",  new_movie_path %>
-  <table>
-    <thead>
-      <tr>
-        <th>Movie name</th>
-        <th>Movie description</th>
-        <th>Movie duration</th>
-        <th>Action</th>
-      <tr>
-    </thead>
+    <table>
+      <thead>
+        <tr>
+          <th>Movie name</th>
+          <th>Movie description</th>
+          <th>Movie duration</th>
+          <th>Action</th>
+        <tr>
+      </thead>
 
-    <tbody>
-      <% @movies.each do |movie| %>
-        <tr>
-          <td><%= movie.name %></td>
-          <td><%= movie.description %></td>
-          <td><%= movie.duration %><td>
-          <td><%= link_to "edit", edit_movie_path(movie) %></td>
-          <td><%= button_to "delete", movie %></td>
-        <tr>
-      <% end %>
-    </tbody>
-  </table>
+      <tbody>
+        <% @movies.each do |movie| %>
+          <tr>
+            <td><%= movie.name %></td>
+            <td><%= movie.description %></td>
+            <td><%= movie.duration %><td>
+            <td><%= link_to "edit", edit_movie_path(movie) %></td>
+            <td><%= button_to "delete", movie %></td>
+          <tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= link_to "back", root_path %>
 <% end %>
 
-<%= link_to "back", root_path %>
 
 
 

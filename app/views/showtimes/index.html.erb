@@ -1,8 +1,7 @@
-<h1>showtime information</h1>
-
 <% if current_user.role == "admin" %>
-<%= link_to "new showtime", new_showtime_path %>
-<table>
+  <h1>showtime information</h1>
+  <%= link_to "new showtime", new_showtime_path %>
+  <table>
     <thead>
       <tr>
         <th>startime</th>
@@ -18,8 +17,8 @@
         <tr>
       <% end %>
     </tbody>
-</table>
+  </table>
+  <%= link_to "back", root_path %>
 <% end %>
 
-<%= link_to "back", root_path %>
 

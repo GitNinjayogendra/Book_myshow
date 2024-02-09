@@ -1,25 +1,23 @@
-<h1>seat information </h1>
-
 <% if current_user.role == "admin" %>
+  <h1>seat information </h1>
   <%= link_to "new seat", new_seat_path %>
-  <table>
-    <thead>
-      <tr>
-        <th>seatnumber</th>
-        <th>Action</th>
-      <tr>
-    </thead>
+    <table>
+      <thead>
+        <tr>
+          <th>seatnumber</th>
+          <th>Action</th>
+        <tr>
+      </thead>
 
-    <tbody>
-      <% @seats.each do |seat| %>
-        <tr>
-          <td><%= seat.seatnumber %></td>
-          <td><%= link_to "edit" , edit_seat_path(seat) %></td>
-          <td><%= button_to "Destroy", seat, method: :delete, data: { confirm: 'Are you sure?'} %></td>
-        <tr>
-      <% end %>
-    </tbody>
-  </table>
+      <tbody>
+        <% @seats.each do |seat| %>
+          <tr>
+            <td><%= seat.seatnumber %></td>
+            <td><%= link_to "edit" , edit_seat_path(seat) %></td>
+            <td><%= button_to "Destroy", seat, method: :delete, data: { confirm: 'Are you sure?'} %></td>
+          <tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= link_to "back", root_path %>
 <% end %>
-
-<%= link_to "back", root_path %>

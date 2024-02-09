@@ -1,5 +1,6 @@
 class CitiesController < ApplicationController
   before_action :current_city, only: [:show, :edit, :update, :destroy]
+  before_action :admin_access
 
   def index
     @cities = City.all
@@ -39,5 +40,9 @@ class CitiesController < ApplicationController
 
   def current_city
     @city = City.find(params[:id])
+  end
+
+  def admin_access
+    current_user.role == "admin"
   end
 end

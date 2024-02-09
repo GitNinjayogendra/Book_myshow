@@ -1,23 +1,23 @@
- <h1>All Cinema</h1>
 <% if current_user.role == "admin" %>
+ <h1>All Cinema</h1>
   <%= link_to "new cinema",  new_cinema_path %>
-  <table>
-    <thead>
-      <tr>
-        <th>cinema name</th>
-        <th>action </th>
-      <tr>
-    </thead>
+    <table>
+      <thead>
+        <tr>
+          <th>cinema name</th>
+          <th>action </th>
+        <tr>
+      </thead>
 
-    <tbody>
-      <% @cinemas.each do |cinema| %>
-        <tr>
-          <td><%= cinema.name %></td>
-          <td><%= link_to "edit",  edit_cinema_path(cinema) %></td>
-          <td><%= button_to "Destroy", cinema, method: :delete, data: { confirm: 'Are you sure?'} %></td>
-        <tr>
-      <% end %>
-    </tbody>
-  </table>
+      <tbody>
+        <% @cinemas.each do |cinema| %>
+          <tr>
+            <td><%= cinema.name %></td>
+            <td><%= link_to "edit",  edit_cinema_path(cinema) %></td>
+            <td><%= button_to "Destroy", cinema, method: :delete, data: { confirm: 'Are you sure?'} %></td>
+          <tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= link_to "back", root_path %>
 <% end %>
-<%= link_to "back", root_path %>

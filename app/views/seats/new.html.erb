@@ -1,3 +1,4 @@
-<%= render "form", seat:@seat %>
-
-<%= link_to "back", seats_path %>
+<% if current_user.role == "admin" %>
+  <%= render "form", seat:@seat %>
+  <%= link_to "back", seats_path %>
+<% end %>

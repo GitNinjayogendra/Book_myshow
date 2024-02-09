@@ -1,5 +1,6 @@
 class SeatsController < ApplicationController
   before_action :current_seat, only: [:show, :edit, :update, :destroy]
+  before_action :admin_access
 
   def index
     @seats = Seat.all
@@ -45,6 +46,10 @@ class SeatsController < ApplicationController
 
   def current_seat
     @seat = Seat.find_by(params[:id])
+  end
+
+  def admin_access
+    current_user.role == "admin"
   end
 end
 

@@ -1,4 +1,5 @@
 class CinemaMovieController < ApplicationController
+  before_action :admin_access
 
   def index
     @cinema_movies = CinemaMovie.all
@@ -39,5 +40,9 @@ class CinemaMovieController < ApplicationController
   private
     def cinema_movie_params
       params.permit(:cinema_id, :movie_id)
+    end
+
+    def admin_access
+      current_user.role == "admin"
     end
 end

@@ -1,5 +1,6 @@
 class CinemasController < ApplicationController
   before_action :current_cinema, only: [:show, :edit, :update, :destroy]
+  before_action :admin_access
 
   def index
     @cinemas = Cinema.all
@@ -46,5 +47,9 @@ class CinemasController < ApplicationController
 
   def current_cinema
     @cinema = Cinema.find(params[:id])
+  end
+
+  def admin_access
+    current_user.role == "admin"
   end
 end

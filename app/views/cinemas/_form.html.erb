@@ -1,18 +1,24 @@
-<%= form_with model:  @cinema do |form| %>
+<% if current_user.role == "admin" %>
+  <%= form_with model:  @cinema do |form| %>
+    <ul>
+      <% @cinema.errors.each do |error| %>
+        <li><%= error.full_message %></li>
+      <% end %>
+    </ul>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
-  <br></br>
-  <div class="form-group">
-    <h1>select your city of cinema</h1>
-      <%= form.label :city_id %>
-      <%= form.collection_select :city_id, City.order(:name),:id,:name %>
-  </div>
-      <br></br>
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-
+    <div class="field">
+      <%= form.label :name %>
+      <%= form.text_field :name %>
+    </div>
+    <br></br>
+    <div class="form-group">
+      <h1>select your city of cinema</h1>
+        <%= form.label :city_id %>
+        <%= form.collection_select :city_id, City.order(:name),:id,:name %>
+    </div>
+        <br></br>
+    <div class="actions">
+      <%= form.submit %>
+    </div>
+  <% end %>
 <% end %>

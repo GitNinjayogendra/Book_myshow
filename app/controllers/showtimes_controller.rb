@@ -1,5 +1,6 @@
 class ShowtimesController < ApplicationController
   before_action :current_show, only: [:show, :edit, :update, :destroy]
+  before_action :admin_access
 
   def index
     @showtimes = Showtime.all
@@ -39,6 +40,10 @@ class ShowtimesController < ApplicationController
 
   def current_show
     @showtime = Showtime.find(params[:id])
+  end
+
+  def admin_access
+    current_user.role == "admin"
   end
 
 end

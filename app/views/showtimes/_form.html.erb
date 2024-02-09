@@ -1,17 +1,19 @@
-<%= form_with model: @showtime do |form| %>
+<% if current_user.role == "admin" %>
+  <%= form_with model: @showtime do |form| %>
 
-  <div>
-    <%= form.label :startime  %>
-    <%= form.text_field :startime %>
-  </div>
+    <div>
+      <%= form.label :startime  %>
+      <%= form.text_field :startime %>
+    </div>
 
-  <div class="form-group">
-    <h1>select your movie for this show</h1>
-      <%= form.label :movie_id %>
-      <%= form.collection_select :movie_id, Movie.order(:name),:id,:name %>
-  </div>
+    <div class="form-group">
+      <h1>select your movie for this show</h1>
+        <%= form.label :movie_id %>
+        <%= form.collection_select :movie_id, Movie.order(:name),:id,:name %>
+    </div>
 
-  <div>
-    <%= form.submit %>
-  </div>
+    <div>
+      <%= form.submit %>
+    </div>
+  <% end %>
 <% end %>
