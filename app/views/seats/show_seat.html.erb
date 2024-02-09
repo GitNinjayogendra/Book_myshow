@@ -5,7 +5,8 @@
     <div class="col-md-1">
       <div class="card ">
         <div class="card-body <%= 'myClass disable' if @booked_value.include?(seat.id) %>" >
-          <a class="seat-link" href="" data-seat-number="<%= seat.seatnumber %>"><%= seat.seatnumber %></a>
+          <a class="seat-link" href="" data-seat-number="<%= seat.seatnumber %>"><%= seat.seatnumber %>
+          </a>
         </div>
       </div>
     </div>
@@ -82,7 +83,7 @@
   }
   body {
   background-color: lightblue;
-}
+  }
 </style>
 
 

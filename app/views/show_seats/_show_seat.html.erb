@@ -1,5 +1,9 @@
 <h1>ticket information</h1>
-<p><%= flash[:notice] %></p>
+<% flash.each do |type, msg| %>
+  <div>
+    <%= msg %>
+  </div>
+<% end %>
 <p>seatnumber:<%= @seats.map{|seat| seat.to_i} %></p>
 <p>showtime:<%= @seat.showtime.startime.strftime('%I:%M %p') %></p>
 <p>cinema name:<%= @seat.cinema.name %></p>

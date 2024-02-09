@@ -1,9 +1,0 @@
-<h1>Seat information </h1>
-
-  <p>seatNumber:<%=@seat.seatnumber%></p>
-  <p>status:<%=@seat.status %></p>
-
-  <ul>
-    <li><%= link_to "edit seat", edit_seat_path(@seat) %></li>
-    <li><%= link_to "destroy"  , seat_path(@seat) ,method: :delete, data: { confirm: 'Are you sure?'}%></li>
-  </ul>
