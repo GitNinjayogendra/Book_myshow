@@ -1,9 +1,9 @@
 <style>
-table, td{
-  border: 1px solid black;
-  border-collapse: collapse;
-  margin-left: 20px;
-}
+  table, td{
+    border: 1px solid black;
+    border-collapse: collapse;
+    margin-left: 20px;
+  }
 </style>
 
 <table>
@@ -16,30 +16,29 @@ table, td{
   <tbody>
     <div class="row">
       <% @cinemas.each do |cinema| %>
-      <tr>
-        <td><div class="col-md-1" style = "margin-left: 10px">
-          <p><%= cinema.name %></p>
-        </div></td>
-        <% @showtimes.each do |showtime| %>
-          <div class="col-md-1">
-            <td><%= link_to  show_seat_seats_path(cinema_id: cinema.id, showtime_id: showtime.id, movie_id: @movie.id) do %>
-            <%= hidden_field_tag 'cinema_id', cinema.id %>
-            <br>
+        <tr>
+          <td><div class="col-md-1" style = "margin-left: 10px">
+            <p><%= cinema.name %></p>
+          </div></td>
+          <% @showtimes.each do |showtime| %>
+            <div class="col-md-1">
+              <td><%= link_to  show_seat_seats_path(cinema_id: cinema.id, showtime_id: showtime.id, movie_id: @movie.id) do %>
+              <%= hidden_field_tag 'cinema_id', cinema.id %>
+              <br>
               <div class="card" style="margin: 20px;">
                 <div class="card-body">
                   <p class="card-text showtime" href= "" ><%= showtime.startime.strftime('%I:%M %p') %></p>
                 </div>
               </div>
               <br>
-            <% end %></td>
-          </div>
-        <% end %>
-      </tr>
+              <% end %></td>
+            </div>
+          <% end %>
+        </tr>
       <% end %>
     </div>
   </tbody>
 </table>
-
 <%= link_to "back", root_path(@cinema, @showtime)%>
 
 

@@ -6,10 +6,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates :username , :password, :email, :contactnumber, presence: true
+  validates :username, :password, :email, :contactnumber, presence: true
   validates :password, format: { with: /\A.*(?=.*\d)(?=.*[!@#$%^&*]).*\z/, message: 'must contain at least one digit and one special character' } 
-  validates :email   , format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i, message: 'must be a valid email address' }    
-  validates :contactnumber , format: { with: /\A\d+\z/, message: 'must only contain numbers' }  
+  validates :email, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i, message: 'must be a valid email address' }
+  validates :contactnumber, format: { with: /\A\d+\z/, message: 'must only contain numbers' }
 
   after_create :send_email
 

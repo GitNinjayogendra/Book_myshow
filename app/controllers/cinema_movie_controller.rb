@@ -23,6 +23,7 @@ class CinemaMovieController < ApplicationController
   end
 
   def update
+    @cinema_movie = CinemaMovie.find(params[:id])
     if @cinema_movie.update(cinema_movie_params)
       redirect_to cinema_movie_index_path
     else

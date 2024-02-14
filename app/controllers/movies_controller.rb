@@ -1,6 +1,7 @@
 class MoviesController < ApplicationController
   before_action :current_movie, only: [:show, :edit, :update, :destroy]
   before_action :admin_access
+
   def index
     @movies = Movie.all
   end
@@ -11,7 +12,6 @@ class MoviesController < ApplicationController
 
   def create
     @movie = Movie.new(movie_params)
-
     if @movie.save
       redirect_to movies_path
     else
@@ -29,12 +29,12 @@ class MoviesController < ApplicationController
 
   def destroy
     @movie.destroy
-    redirect_to movies_path, status: :see_others
+    redirect_to movies_path
   end
 
   private
   def movie_params
-    params.require(:movie).permit(:name, :description , :duration, :avatar,)
+    params.require(:movie).permit(:name, :description, :duration, :avatar)
   end
 
   def current_movie

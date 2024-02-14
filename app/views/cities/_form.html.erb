@@ -1,22 +1,21 @@
 <% if current_user.role == "admin" %>
-  <h1>Create a new City</h1>
-
   <%= form_with model: @city do |form| %>
     <ul>
       <% @city.errors.each do |error| %>
         <li><%= error.full_message %></li>
       <% end %>
     </ul>
+    <br>
     <div>
       <%= form.label :name  %>
       <%= form.text_field :name %>
     </div>
-
+    <br>
     <div>
       <%= form.label :state %>
       <%= form.text_area :state %>
     </div>
-
+    <br>
     <div>
       <%= form.submit %>
     </div>

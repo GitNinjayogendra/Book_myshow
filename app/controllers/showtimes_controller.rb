@@ -12,7 +12,6 @@ class ShowtimesController < ApplicationController
 
   def create
     @showtime = Showtime.create(show_params)
-
     if @showtime.save
       redirect_to showtimes_path
     else
@@ -45,5 +44,4 @@ class ShowtimesController < ApplicationController
   def admin_access
     current_user.role == "admin"
   end
-
 end

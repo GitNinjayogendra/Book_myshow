@@ -1,26 +1,32 @@
 <% if current_user.role == "admin" %>
   <%= form_with model: @movie do |form| %>
 
+    <ul>
+      <% @movie.errors.each do |error| %>
+        <li><%= error.full_message %></li>
+      <% end %>
+    </ul>
+    <br>
     <div>
       <%= form.label :name  %>
       <%= form.text_field :name %>
     </div>
-
+    <br>
     <div>
       <%= form.label :description %>
       <%= form.text_area :description %>
     </div>
-
+    <br>
     <div>
       <%= form.label :duration %>
       <%= form.text_area :duration %>
     </div>
-
+    <br>
     <div>
       <%= form.label :photo %>
       <%= form.file_field :avatar %>
     </div>
-
+    <br>
     <div>
       <%= form.submit %>
     </div>

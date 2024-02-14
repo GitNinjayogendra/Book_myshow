@@ -1,5 +1,5 @@
 <% if current_user.role == "admin" %>
-  <h1>New City</h1>
+  <h3>New City</h3>
   <%= render "form", city: @city %>
   <%= link_to "back", cities_path(@city) %>
 <% end %>

@@ -1,5 +1,5 @@
 <% if current_user.role == "admin" %>
- <h1>All cities</h1>
+  <h3>All cities</h3>
   <%= link_to "new city", new_city_path %>
   <table>
     <thead>
@@ -8,7 +8,6 @@
         <th>action </th>
       <tr>
     </thead>
-
     <tbody>
       <% @cities.each do |city| %>
         <tr>
