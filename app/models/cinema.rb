@@ -5,9 +5,7 @@ class Cinema < ApplicationRecord
   has_many :seats
   validates :name, presence: true, uniqueness:{case_sensitive: false }
   validates :city_id, presence: true
-
   before_save :cinema_name
-
   def cinema_name
     self.name = name.capitalize
   end

@@ -1,25 +1,23 @@
-<% if current_user.role == "admin" %>
-  <%= form_with model: @showtime do |form| %>
+<%= form_with model: @showtime do |form| %>
 
-    <ul>
-      <% @showtime.errors.each do |error| %>
-        <li><%= error.full_message %></li>
-      <% end %>
-    </ul>
-    <br>
-    <div>
-      <%= form.label :startime %>
-      <%= form.text_field :startime %>
-    </div>
-    <br>
-    <div class="form-group">
-      <h3>select your movie for this show</h3>
-        <%= form.label :movie_id %>
-        <%= form.collection_select :movie_id, Movie.order(:name),:id,:name %>
-    </div>
-    <br>
-    <div>
-      <%= form.submit %>
-    </div>
-  <% end %>
+  <ul>
+    <% @showtime.errors.each do |error| %>
+      <li><%= error.full_message %></li>
+    <% end %>
+  </ul>
+  <br>
+  <div>
+    <%= form.label :startime %>
+    <%= form.text_field :startime %>
+  </div>
+  <br>
+  <div class="form-group">
+    <h3>select your movie for this show</h3>
+    <%= form.label :movie_id %>
+    <%= form.collection_select :movie_id, Movie.order(:name),:id,:name %>
+  </div>
+  <br>
+  <div>
+    <%= form.submit %>
+  </div>
 <% end %>

@@ -12,7 +12,6 @@ class CitiesController < ApplicationController
 
   def create
     @city = City.new(city_params)
-
     if @city.save
       redirect_to cities_path
     else
@@ -43,6 +42,9 @@ class CitiesController < ApplicationController
   end
 
   def admin_access
-    current_user.role == "admin"
+    if current_user.role != "admin"
+      flash[:notice] = "colud not found"
+      render partial: "shared/flash"
+    end
   end
 end

@@ -1,4 +1,5 @@
 class CinemaMovieController < ApplicationController
+
   before_action :admin_access
 
   def index
@@ -32,18 +33,21 @@ class CinemaMovieController < ApplicationController
   end
 
   def destroy
-     @cinema_movie = CinemaMovie.find(params[:id])
-     if @cinema_movie.destroy
-       redirect_to cinema_movie_index_path
-     end
+    @cinema_movie = CinemaMovie.find(params[:id])
+    if @cinema_movie.destroy
+      redirect_to cinema_movie_index_path
+    end
   end
 
   private
-    def cinema_movie_params
-      params.permit(:cinema_id, :movie_id)
-    end
+  def cinema_movie_params
+    params.permit(:cinema_id, :movie_id)
+  end
 
-    def admin_access
-      current_user.role == "admin"
+  def admin_access
+    if current_user.role != "admin"
+      flash[:notice] = "colud not found"
+      render partial: "shared/flash"
     end
+  end
 end

@@ -1,5 +1,4 @@
-<% if current_user.role == "admin" %>
-  <h3> edit Movies </h3>
-  <%= render "form", movie: @movie %>
-  <%= link_to "back", movies_path %>
-<% end %>
+<h3> edit Movies </h3>
+<%= render "form", movie: @movie %>
+<%= link_to "back", movies_path %>
+

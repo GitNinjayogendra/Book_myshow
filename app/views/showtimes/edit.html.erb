@@ -1,8 +1,7 @@
-<% if current_user.role == "admin" %>
-  <h3>edit showtime</h3>
-  <%= render "form", showtime: @showtime %>
-  <%= link_to "back", seats_path(@seat) %>
-<% end %>
+<h3>edit showtime</h3>
+<%= render "form", showtime: @showtime %>
+<%= link_to "back", seats_path(@seat) %>
+
 
 
 

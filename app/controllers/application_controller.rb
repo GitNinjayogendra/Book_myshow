@@ -5,7 +5,6 @@ class ApplicationController < ActionController::Base
 	def after_sign_in_path_for(resource)
     dashboards_path
   end
-
 	protected
-    add_flash_types :info, :error, :warning
+  add_flash_types :info, :error, :warning
 end

@@ -1,5 +1,3 @@
-<% if current_user.role == "admin" %>
-  <h3>New Cinema</h3>
-  <%= render 'form', cinema:@cinema %>
-  <%= link_to 'Back', cinemas_path(@cinema) %>
-<% end %>
+<h3>New Cinema</h3>
+<%= render 'form', cinema: @cinema %>
+<%= link_to 'Back', cinemas_path(@cinema) %>

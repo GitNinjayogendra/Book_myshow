@@ -24,4 +24,8 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { sessions: 'users/sessions' ,:registrations => "users/registrations"}
   post '/show_seat', to: 'show_seats#create'
   resources :cinema_movie
+  resources :payment
+#   post ‘payment/create’
+# get ‘payment/success’
+# get ‘payment/cancel’
 end

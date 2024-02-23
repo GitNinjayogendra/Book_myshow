@@ -5,11 +5,11 @@
     margin-left: 20px;
   }
 </style>
-
+<br>
 <table>
   <thead>
     <tr style = "text-align: center;">
-      <th style="margin-left: 20px; border:1px solid black; border-collapse: collapse;" >cinema name </th>
+      <th style="margin-left: 20px; border: 1px solid black; border-collapse: collapse;" >cinema name </th>
       <th>showtime </th>
     <tr>
   </thead>
@@ -17,7 +17,7 @@
     <div class="row">
       <% @cinemas.each do |cinema| %>
         <tr>
-          <td><div class="col-md-1" style = "margin-left: 10px">
+          <td><div class="col-md-1" style = "margin-left: 20px">
             <p><%= cinema.name %></p>
           </div></td>
           <% @showtimes.each do |showtime| %>
@@ -39,6 +39,7 @@
     </div>
   </tbody>
 </table>
+<br>
 <%= link_to "back", root_path(@cinema, @showtime)%>
 
 

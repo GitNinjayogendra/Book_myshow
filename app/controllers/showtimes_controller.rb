@@ -42,6 +42,9 @@ class ShowtimesController < ApplicationController
   end
 
   def admin_access
-    current_user.role == "admin"
+    if current_user.role != "admin"
+      flash[:notice] = "colud not found"
+      render partial: "shared/flash"
+    end
   end
 end

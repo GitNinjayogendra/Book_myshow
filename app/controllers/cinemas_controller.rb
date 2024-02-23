@@ -20,11 +20,11 @@ class CinemasController < ApplicationController
 
   def create
     @cinema = Cinema.new(cinema_params)
-      if @cinema.save
-        redirect_to cinemas_path
-      else
-        render :new, status: :unprocessable_entity
-      end
+    if @cinema.save
+      redirect_to cinemas_path
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def update
@@ -50,6 +50,9 @@ class CinemasController < ApplicationController
   end
 
   def admin_access
-    current_user.role == "admin"
+    if current_user.role != "admin"
+      flash[:notice] = "colud not found"
+      render partial: "shared/flash"
+    end
   end
 end

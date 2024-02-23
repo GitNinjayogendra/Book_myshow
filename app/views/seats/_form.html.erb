@@ -1,26 +1,23 @@
-<% if current_user.role == "admin" %>
-  <h3>Create new seat</h3>
-  <%= form_with model: @seat do |form| %>
-
-    <ul>
-      <% @seat.errors.each do |error| %>
-        <li><%= error.full_message %></li>
-      <% end %>
-    </ul>
-    <br>
-    <div>
-      <%= form.label :seatnumber %>
-      <%= form.text_field :seatnumber %>
-    </div>
-    <br>
-    <div class="form-group">
-      <h3>select your cinema for seat</h3>
-        <%= form.label :cinema_id %>
-        <%= form.collection_select :cinema_id, Cinema.order(:name),:id,:name %>
-    </div>
-    <br>
-    <div>
-      <%= form.submit %>
-    </div>
-  <% end %>
+<h3>Create new seat</h3>
+<%= form_with model: @seat do |form| %>
+  <ul>
+    <% @seat.errors.each do |error| %>
+      <li><%= error.full_message %></li>
+    <% end %>
+  </ul>
+  <br>
+  <div>
+    <%= form.label :seatnumber %>
+    <%= form.text_field :seatnumber %>
+  </div>
+  <br>
+  <div class="form-group">
+    <h3>select your cinema for seat</h3>
+    <%= form.label :cinema_id %>
+    <%= form.collection_select :cinema_id, Cinema.order(:name),:id,:name %>
+  </div>
+  <br>
+  <div>
+    <%= form.submit %>
+  </div>
 <% end %>

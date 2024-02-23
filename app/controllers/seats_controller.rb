@@ -41,7 +41,7 @@ class SeatsController < ApplicationController
 
   private
   def seat_params
-    params.require(:seat).permit(:seatnumber, :status, :cinema_id)
+    params.require(:seat).permit(:seatnumber, :cinema_id)
   end
 
   def current_seat
@@ -49,7 +49,10 @@ class SeatsController < ApplicationController
   end
 
   def admin_access
-    current_user.role == "admin"
+    if current_user.role != "admin"
+      flash[:notice] = "colud not found"
+      render partial: "shared/flash"
+    end
   end
 end
 
